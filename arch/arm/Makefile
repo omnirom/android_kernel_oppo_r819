@@ -164,6 +164,7 @@ machine-$(CONFIG_ARCH_IMX_V6_V7)	:= imx
 machine-$(CONFIG_ARCH_MXS)		:= mxs
 machine-$(CONFIG_ARCH_NETX)		:= netx
 machine-$(CONFIG_ARCH_NOMADIK)		:= nomadik
+machine-$(CONFIG_ARCH_MEDIATEK)		:= mediatek
 machine-$(CONFIG_ARCH_OMAP1)		:= omap1
 machine-$(CONFIG_ARCH_OMAP2)		:= omap2
 machine-$(CONFIG_ARCH_OMAP3)		:= omap2
@@ -233,8 +234,6 @@ endif
 
 machdirs := $(patsubst %,arch/arm/mach-%/,$(machine-y))
 platdirs := $(patsubst %,arch/arm/plat-%/,$(plat-y))
-
-include $(srctree)/mediatek/Makefile
 
 
 ifeq ($(KBUILD_SRC),)

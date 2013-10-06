@@ -263,7 +263,6 @@ config MMU
 # The "ARM system type" choice list is ordered alphabetically by option
 # text.  Please add new entries in the option alphabetic order.
 #
-if !MEDIATEK_SOLUTION
 choice
 	prompt "ARM system type"
 	default ARCH_VERSATILE
@@ -953,6 +952,20 @@ config ARCH_NOMADIK
 	help
 	  Support for the Nomadik platform by ST-Ericsson
 
+config ARCH_MEDIATEK
+        bool "MediaTek platform"
+        select GENERIC_TIME
+        select GENERIC_CLOCKEVENTS
+        select ARCH_HAS_CPUFREQ
+        select ARM_AMBA
+        select CPU_V7
+        select HAVE_SMP
+        select NEED_MACH_MEMORY_H
+        select ARM_GIC
+        help
+          This enable support for MediaTek platform.
+
+
 config ARCH_DAVINCI
 	bool "TI DaVinci"
 	select GENERIC_CLOCKEVENTS
@@ -1012,7 +1025,6 @@ config ARCH_ZYNQ
 	help
 	  Support for Xilinx Zynq ARM Cortex A9 Platform
 endchoice
-endif
 #
 # This is sorted alphabetically by mach-* pathname.  However, plat-*
 # Kconfigs may be included either alphabetically (according to the
@@ -1070,6 +1082,8 @@ source "arch/arm/mach-netx/Kconfig"
 
 source "arch/arm/mach-nomadik/Kconfig"
 source "arch/arm/plat-nomadik/Kconfig"
+
+source "arch/arm/mach-mediatek/Kconfig"
 
 source "arch/arm/plat-omap/Kconfig"
 
@@ -2315,6 +2329,4 @@ source "security/Kconfig"
 source "crypto/Kconfig"
 
 source "lib/Kconfig"
-
-source "../mediatek/kernel/Kconfig"
 
